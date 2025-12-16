@@ -10,6 +10,13 @@ from pydantic import BaseModel
 
 app = FastAPI()
 
+# Initialize prediction pipeline globally
+try:
+    prediction_pipeline = PredictionPipeline()
+except Exception as e:
+    prediction_pipeline = None
+    print(f"Error initializing prediction pipeline: {e}")
+
 templates = Jinja2Templates(directory="templates")
 
 class TextIn(BaseModel):
@@ -30,9 +37,11 @@ async def training():
 @app.post("/predict")
 async def predict_route(text_in: TextIn):
     try:
-        obj = PredictionPipeline()
+        if prediction_pipeline is None:
+             return Response("Prediction pipeline not initialized", status_code=500)
+        
         text = text_in.text
-        summary = obj.predict(text)
+        summary = prediction_pipeline.predict(text)
         return summary
     except Exception as e:
         return f"Error: {e}"

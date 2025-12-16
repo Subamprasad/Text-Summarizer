@@ -4,7 +4,9 @@ This project implements an end-to-end Text Summarization pipeline using the **Go
 
 ## Project Overview
 
-The goal of this project is to summarize dialogue conversations (using the SAMSum dataset) into concise summaries. The project is structured modularly to allow for easy scalability and maintenance.
+Welcome to the **Text Summarization Project**! This application leverages the power of the **Google Pegasus** model to transform lengthy dialogue conversations into concise, meaningful summaries.
+
+Whether you're looking to quickly understand chat logs or experiment with NLP pipelines, this project offers a robust, modular, and easy-to-deploy solution. It is built on the **SAMSum dataset** and strictly adheres to industry-standard MLOps practices.
 
 ### Key Features
 - **Modular Pipeline**: Broken down into stages (Ingestion, Validation, Transformation, Training, Evaluation).
@@ -75,6 +77,11 @@ The application exposes the following endpoints:
 -   `GET /`: Serves the web interface.
 -   `POST /predict`: Accepts JSON payload `{"text": "your dialogue here"}` and returns the summary.
 -   `GET /train`: Triggers the training pipeline (requires authentication or local execution).
+
+## Usage Note
+
+> [!NOTE]
+> **Prediction Latency**: When converting "Text to Summarize" to a "Summary", please be patient. It will take a little bit of time to summarize the text as the model processes the input.
 
 ## Directory Structure
 - `src/textSummarizer`: Main source code.
