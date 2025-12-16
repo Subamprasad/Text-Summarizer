@@ -160,3 +160,12 @@ cython_debug/
 data/
 *.csv
 *.xlsx
+
+# Model artifacts
+artifacts/
+mlruns/
+mlflow.db
+pegasus-samsum/
+samsum_dataset/
+research/logs/
+*.zip
